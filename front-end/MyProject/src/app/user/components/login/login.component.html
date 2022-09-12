@@ -1,0 +1,48 @@
+
+<br><br>
+
+<section class="container-fluid bg">
+   <section class="row justify-content-center">
+      <section class="col-12 col-sm-6 col-md-3">
+         <form (ngSubmit)="login()"  [formGroup]="loginForm" class="was-validated">
+            <div class="register">Login</div>
+            {{msg}}
+            <div class="form-group">
+              <label for="validationDate" class="form-label" >Username</label>
+              <input class="form-control" id="validationTextarea" type="text"  formControlName="username"
+               required>
+               <div class="invalid-feedback"> Please enter Username</div>
+            </div>
+      
+            <div class="form-group">
+              <label for="validationDate" class="form-label" >Password</label>
+              <input class="form-control"  type="password" formControlName="password"
+               required>
+               <div class="invalid-feedback"> Please enter Password</div>
+            </div>    
+            <button type="submit" class="btn-block button" id="submit"
+            [disabled]="loginForm.invalid">
+               Sign-in
+            </button>
+           </form>
+      </section>
+   </section>
+
+   </section>
+   <!--
+   <h3>Login</h3>
+{{msg}}
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+    Username <input type="text" formControlName="username">
+    <br>
+    Password <input type="password" formControlName="password">
+    <br>
+    <input type="submit" value="Login">
+</form>-->
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+<title>Feedbacks List</title>
+<div class="content-wrapper">      
+              <h1 style="text-align: center;">Feedbacks List</h1>
+
+                <input class="form-control search" type="text" name="username" [(ngModel)]="rate" 
+                (ngModelChange)="search()" placeholder="enter rate to search">
+
+              
+                <table class="table table-hover" id="htmlData">
+                  <thead>
+                    <tr>
+                      <th><i class="pi pi-angle-down"  (click)="sort('feedbackid')" style="color: black;"><b>Feedback Id</b></i></th>
+                      <th style="color: black;">Rate</th>
+                      <th style="color: black;">Message</th>
+                      <th style="color: black;">Dateofbirth</th>
+                      <th style="color: black;">Gender</th>
+                      <th style="color: black;">Email</th>
+                      <th style="color: black;">Phone Number</th>
+                      <th style="color: black;">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let feedback of feedbacks | orderBy: key : reverse | paginate : {itemsPerPage : 5 , currentPage:p}">
+                      <td data-label="feedback Id">{{feedback.feedbackid}}</td>
+                      <td data-label="feedback rate">{{feedback.rate}}</td>
+                      <td data-label="message">{{feedback.message}}</td>
+                      <td data-label="dateofbirth">{{feedback.dateofbirth}}</td>     
+                      <td data-label="gender">{{feedback.gender}}</td>  
+                      <td data-label="email">{{feedback.email}}</td>  
+                      <td data-label="phone">{{feedback.phone}}</td>         
+                      <td data-label="Date">{{feedback.date}}</td>    
+                    </tr>
+                  </tbody>
+                </table>
+
+</div>
+
+      
+        <div class="paginationzz">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+
+

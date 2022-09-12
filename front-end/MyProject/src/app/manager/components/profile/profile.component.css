@@ -1,0 +1,19 @@
+.breadcrumb{
+    margin-left: 55px;
+    background-color: white;
+}
+
+#cbb{
+    margin-top:-10px;
+    width:100%;
+    float:right;
+    font-size:50px;
+    animation-name:cnt;
+    animation-duration:4s; 
+    color:#FFFFFF;
+    animation-direction: alternate;
+}
+.container{
+    margin-bottom: 10px;
+    margin-left: 100px;
+}

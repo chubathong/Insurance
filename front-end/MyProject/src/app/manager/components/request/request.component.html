@@ -1,0 +1,101 @@
+<head>
+	<title>Request Employees List</title>
+	<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+</head>
+
+
+<div  class="main">
+  <div class="contactus">
+    <div id="cbb">
+    <h1>Request Employees List </h1>
+    
+    </div>
+    </div>
+  
+  
+  
+  
+   <div class="container" >
+  
+      <ol class="abc">
+          <li class="breadcrumb-item activee" ><a href="#" style="color: white;font-size: large;">Home</a></li>
+          <li class="breadcrumb-item active" style="color: white;font-size: large;">Request Employees</li>
+      </ol>
+  
+          <div class="col-12 col-sm-12 col-md-12">   
+           <!-- <button class="btn btn-primary addbtn" data-toggle="modal" data-target="#exampleModal">Add Company</button>
+            <input class="form-control search" type="text" name="username" [(ngModel)]="CompanyName" 
+            (ngModelChange)="search()" placeholder="enter username to search">-->
+&nbsp;&nbsp;
+
+            <input class="s" type="text"  [(ngModel)]="fullname" 
+            (ngModelChange)="search()" >&nbsp;
+
+            <input class="s1" type="text" [(ngModel)]="policyDescription" 
+            (ngModelChange)="searchpolicy()" >&nbsp;
+
+            <input class="s2" type="text" [(ngModel)]="companyName" 
+            (ngModelChange)="searchcompanyname()" >&nbsp;
+
+            <input class="s4" type="text" [(ngModel)]="status" 
+            (ngModelChange)="searchstatus()" >
+            
+        <table class="table table-hover" >
+          <thead>
+            <tr>
+              <th style="color: white;"><i class="pi pi-angle-down" (click)="sort('requestid')" style="color: white;"><b>RequestId</b></i></th>
+              <th style="color: white;">Request Date</th>
+              <th style="color: white;">Employee Name</th>
+              <th style="color: white;">Policy Name</th>
+              <th style="color: white;">Company Name</th>
+              <th style="color: white;">Status</th>
+
+              <th style="color: white;"></th>
+              <th style="color: white;">Action</th>
+              <th style="color: white;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let request of requestDetails  | orderBy: key : reverse | paginate : {itemsPerPage : 5 , currentPage:p} ">
+              <td data-label="RequestId" id="tdco" style="color: white;">{{request.requestId}}</td>
+              <td data-label="RequestDate" id="tdco"style="color: white;">{{request.requestDate}}</td>
+              <td data-label="EmployeeName" id="tdco"style="color: white;">{{request.fullname}}</td>
+              <td data-label="Policy Id" id="tdco"style="color: white;">
+                    {{request.policyDescription}}                
+              </td>
+              <td data-label="Company Name"id="tdco" style="color: white;">{{request.companyName}}</td>
+              <td data-label="Status" id="tdco"style="color: white;">{{request.status}}</td>
+
+             <th >
+                  <button type="button" class="btn btn-primary"[routerLink]="['/manager/request/check', {id:request.requestId}]">Check</button>
+                  
+              </th>
+              <th>
+                  <button type="button" class="btn btn-success" [routerLink]="['/manager/request/details', {id:request.requestId}]">Detail</button>
+              </th>
+              <th>
+                
+            </th>
+          
+            </tr>
+          </tbody>
+        </table>
+
+     
+        </div>
+</div>
+<div class="pagination">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+</div>
+
+
+
+

@@ -1,0 +1,122 @@
+<head>
+	<title>Request</title>
+	<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+</head>
+
+<div  class="main">
+<div class="contactus">
+  <div id="cbb">
+  <h1>Request</h1>
+  
+  </div>
+  </div>
+<div class="container">
+
+    <ol class="abc">
+      <li class="breadcrumb-item activee" ><a href="#" style="color: white;font-size: large;">Home</a></li>
+      <li class="breadcrumb-item active" style="color: white;font-size: large;">Request </li>
+  </ol>
+
+
+<form *ngIf="addFormRequest" [formGroup]="addFormRequest" (ngSubmit)="confirm()" #requestForm="ngForm" class="was-validated">
+
+
+
+            <div class="mb-3">
+            <select class="form-select" required aria-label="select example" formControlName="policyid">
+                <option value="">Which policy do you choose?</option>
+                <ng-container *ngFor = "let policy of policys">
+                <option value="{{policy.policyId}}">{{policy.policyDescription}}</option>
+              </ng-container>
+              </select> 
+
+              
+              <div class="invalid-feedback"style="font-size: medium;"*ngIf="addFormRequest.get('policyid').touched">Please select policy you choose</div>
+            </div>
+
+          <div class="mb-3">
+            <label for="validationDate" class="form-label" style="color: white;font-size: x-large;font-style: italic;">Amount </label>
+            <div class="mb-3">
+              <input class="form-control" id="validationTextarea" name="date" type="number" 
+             
+              formControlName="amount"
+               required>
+               <div class="invalid-feedback"style="font-size: medium;" *ngIf="addFormRequest.get('amount').touched"> Please enter amount </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="validationDate" class="form-label" style="color: white;font-size: x-large">Emi </label>
+            <input class="form-control" id="validationTextarea" name="email" type="number"
+            formControlName="emi"
+            
+             required>
+             <div class="invalid-feedback"style="font-size: medium;"*ngIf="addFormRequest.get('emi').touched"> Please enter emi </div>
+          </div>
+          <div class="mb-3">
+            <select class="form-select" required aria-label="select example" formControlName="companyId">
+              <option value="">Which company do you choose?</option>
+              <ng-container *ngFor = "let company of companies">   
+              <option value="{{company.companyId}}">{{company.companyName}}</option>
+            </ng-container>
+            </select>
+             <div class="invalid-feedback"style="font-size: medium;"*ngIf="addFormRequest.get('companyId').touched"> Please enter companyid </div>
+          </div> 
+
+          <div class="mb-3">
+
+          <select class="form-select" required aria-label="select example" formControlName="managerid">
+              <option value="">Who is your manager?</option>
+              <ng-container *ngFor = "let manager of managers">   
+              <option value="{{manager.employeeid}}">{{manager.fullname}}</option>
+            </ng-container>
+            </select>
+
+            
+
+            <div class="invalid-feedback"style="font-size: medium;" *ngIf="addFormRequest.get('managerid').touched">Please select your manager</div>
+          </div> 
+          <div class="mb-3">
+            <label for="validationDate" class="form-label" style="color: white;font-size: x-large">Reason</label>
+            <textarea class="form-control " id="validationTextarea" name="email" type="text"
+            formControlName="reason" rows="5" cols="5"
+
+             required>
+            </textarea>
+             <div class="invalid-feedback"style="font-size: medium;"*ngIf="addFormRequest.get('reason').touched"> Please enter reason </div>
+          </div> 
+          <div class="mb-3">
+            <label for="validationDate" class="form-label" style="color: white;font-size: x-large">Description</label>
+            <textarea class="form-control " id="validationTextarea" name="email" type="text"
+            formControlName="description" rows="5" cols="5"
+
+             required>
+            </textarea>
+             <div class="invalid-feedback"style="font-size: medium;"*ngIf="addFormRequest.get('description').touched"> Please enter description </div>
+            </div>
+            
+               
+          
+
+           <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+           <button (click)="confirm()" type="button" class="btn btn-info btn-lg" [disabled]="requestForm.invalid">Send Request</button>
+           <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000" rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>                                 
+           <p-toast></p-toast>
+</form>
+</div>
+</div>
+
+
+
+
+       
+
+
+

@@ -1,0 +1,161 @@
+
+<html>
+  <head>
+      <style type="text/css">
+          .container-fluid{
+              width: 200;
+              margin: auto;
+              text-align: center;
+          }
+         
+  body {
+    background: #C5E1A5;
+  }
+  form {
+    width: 70%;
+    margin: 60px auto;
+    padding: 0px 120px 80px 120px;
+    text-align: center;
+  }
+  label {
+    display: block;
+    position: relative;
+    margin: 40px 0px;
+  }
+  .label-txt {
+    position: absolute;
+    top: -1.6em;
+    padding: 10px;
+    font-family: sans-serif;
+    font-size: .8em;
+    letter-spacing: 1px;
+    color: rgb(120,120,120);
+    transition: ease .3s;
+  }
+  .input {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+  
+  .line-box {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background: #BCBCBC;
+  }
+  
+  .line {
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #8BC34A;
+    transition: ease .6s;
+  }
+  
+  .input:focus + .line-box .line {
+    width: 100%;
+  }
+  
+  .label-active {
+    top: -3em;
+  }
+  
+  button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: rgb(220,220,220);
+    font-weight: bold;
+    color: rgb(120,120,120);
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: ease .3s;
+  }
+  
+  button:hover {
+    background: #8BC34A;
+    color: #ffffff;
+  }
+  
+      </style>
+  </head>
+<title>Detail Policy</title>
+  <section class="content">
+    <div class="container-fluid">
+   
+        <div class="col-md-12 float-right">
+            <div class="container register-form">
+<h1>Detail Policy</h1>
+  <form *ngIf="policy != null" >
+    <label>
+      <p class="label-txt">Policy Id</p>
+      {{policy.policyId}}
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <label>
+      <p class="label-txt">Policy Name</p>
+      {{policy.policyName}}
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <label>
+      <p class="label-txt">Policy Description</p>
+      {{policy.policyDescription}}
+      <div class="line-box">
+        <div class="line"></div>
+      </div>
+    </label>
+    <label>
+        <p class="label-txt">Amount</p>
+        {{policy.amount}}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+      <label>
+        <p class="label-txt">Emi</p>
+        {{policy.emi}}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+      <label>
+        <p class="label-txt">Duration</p>
+        {{policy.duration}}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+
+      <label>
+        <p class="label-txt">companyName</p>
+        {{policy.companyName}}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+
+      <label>
+        <p class="label-txt">hospitalName</p>
+        {{policy.hospitalName}}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+    
+  </form>
+
+</div>
+</div>
+</div>
+</section>

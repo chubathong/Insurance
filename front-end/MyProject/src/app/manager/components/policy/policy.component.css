@@ -1,0 +1,58 @@
+.title{
+    margin-top: 50px;
+     margin-left: 20px;
+    font-size: 34px;
+}
+
+.breadcrumbs-section{
+    background-color: #e9ecef;
+}
+.container{
+    margin-top: 50px;
+}
+
+.breadcrumb{
+    margin-left: -10px;
+    background-color: white;
+}
+.contactus{
+    padding:100px;
+    margin-bottom:1em;
+    font-size:2.5em;
+    margin-block-start:0.1em;
+    margin-block-end:0.83;
+    background-image: url(/assets/images/bg5.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+}
+
+#cbb{
+    margin-top:-10px;
+    width:100%;
+    float:right;
+    font-size:50px;
+    animation-name:cnt;
+    animation-duration:4s; 
+    color:#FFFFFF;
+    animation-direction: alternate;
+}
+
+
+@keyframes cnt{
+0%{ 
+width:300px;
+  color: #FFFFFF;
+}
+50%{
+ color:#a39e9e;
+}
+70%{
+ color:#CCC;
+}
+100%{
+ color:#FFFFFF;
+}
+
+}

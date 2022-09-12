@@ -1,0 +1,99 @@
+
+<head>
+	<title>Feedback</title>
+	<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div  class="main">
+  <div class="contactus">
+    <div id="cbb">
+    <h1>Feed back</h1>
+    
+    </div>
+    </div>
+
+<div class="container">
+  <ol class="abc">
+    <li class="breadcrumb-item activee" ><a href="#" style="color: white;font-size: large;">Home</a></li>
+    <li class="breadcrumb-item active" style="color: white;font-size: large;">Feedback</li>
+</ol>
+
+
+<form [formGroup]="addFormFeedback" (ngSubmit)="confirm1()" #requestForm="ngForm"  class="was-validated">
+
+
+
+  <div class="mb-3">
+
+    <div class="invalid-feedback" *ngIf="addFormFeedback.get('rate').touched">Invalid select country</div>
+  </div>
+  <div class="mb-3">
+  <div class="input-box">
+    <select  class="form-select" data-style="btn-primary"  required  formControlName="rate"
+    
+    >
+      <option value="">What do you think about us?</option>
+      <option value="Good">Good</option>
+      <option value="Bad">Bad</option>
+      <option value="Avarage">Avarage</option>
+    </select>
+    <div class="invalid-feedback"style="font-size: medium;" *ngIf="addFormFeedback.get('rate').touched ">Invalid select country</div>
+  </div>
+</div>
+
+  <div class="mb-3">
+    <label for="validationDate" class="form-label" style="color: white;font-size: x-large;font-style: italic;">Date of birth</label>
+    <div class="mb-3">
+      <input class="form-control" id="validationTextarea" name="date" type="date" 
+      formControlName="dateofbirth"
+       required>
+       <div class="invalid-feedback"style="font-size: medium;" *ngIf="addFormFeedback.get('date').touched"> Please enter date of birth</div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <select class="form-select" required aria-label="select example" formControlName="gender">
+      <option value="">Choose your gender?</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+    <div class="invalid-feedback"style="font-size: medium;" *ngIf="addFormFeedback.get('gender').touched">Invalid select gender</div>
+  </div>
+
+
+  <label for="validationDate" class="form-label" style="color: white;font-size: x-large;font-style: italic;">Details Information</label>
+
+      
+  <div class="mb-3">
+    <textarea class="form-control " id="validationTextarea" name="message"
+       
+      placeholder="Your message" formControlName="message"
+     required  rows="8"></textarea>
+    <div class="invalid-feedback"style="font-size: medium;" *ngIf="addFormFeedback.get('message').touched">
+      Please enter your message.
+    </div>
+  </div>
+
+
+  
+  <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+  <button (click)="confirm1()" label="Send"  type="button" class="btn btn-info btn-lg" [disabled]="requestForm.invalid">Send Feedback</button>
+  <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000" rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>                                 
+  <p-toast></p-toast>
+  
+
+
+</form>
+</div>
+</div>
+
+</body>

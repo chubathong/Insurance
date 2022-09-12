@@ -1,0 +1,73 @@
+
+
+
+@media(max-width: 500px) {
+    .table thead{
+        display: none;
+    }
+    .table, .table tbody,.table tr,.table td{
+        display: block;
+        width: 100%;
+    }
+    .table tr{
+        margin-bottom: 15px;
+        text-align: left;
+    }
+    .table td{
+        text-align: right;
+        padding-left: 50%;
+        text-align: right;
+        position: relative;
+    }
+    .table td::before{
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: left;
+
+    }
+}
+
+.h{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.table{
+    margin-top: -10px;
+}
+.btn-block{
+    width: 100px;
+    margin-top: -40px;
+}
+
+
+.s{
+  margin-left: 120px;
+  height: 40px;
+  width: 130px;
+}
+.s1{
+    height: 40px;
+    width: 110px;
+  }
+.s2{
+    margin-left: 20px;
+    height: 40px;
+    width: 130px;
+  }
+.s4{
+    height: 40px;
+    width: 70px;
+  }
+.s3{
+    height: 40px;
+    width: 144px;
+    margin-left: 300px;
+}
+.form-control{
+    width: 150px;
+}

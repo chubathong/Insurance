@@ -1,0 +1,69 @@
+<title>Reports List</title>
+<div class="content-wrapper">
+     <div class="col-12 col-sm-12 col-md-12" >
+              <h1 class="h" style="text-align: center;">Report</h1>
+
+
+              <input class="s" type="text"  [(ngModel)]="fullname" placeholder="employee name"
+              (ngModelChange)="search()" >&nbsp;&nbsp;
+
+              <input class="s1" type="text" [(ngModel)]="policyDescription" placeholder="policy name"
+              (ngModelChange)="searchpolicy()" >&nbsp;
+
+              <input class="s2" type="text" [(ngModel)]="companyName" placeholder="company name"
+              (ngModelChange)="searchcompanyname()" >&nbsp;
+
+              <input class="s4" type="text" [(ngModel)]="status" placeholder="status"
+              (ngModelChange)="searchstatus()" >
+
+                <div>
+                  <button class="btn btn-success btn-block" (click)="openPDF()">Download</button>
+               </div>
+
+              <table class="table table-hover"  id="htmlData" >
+                <thead>
+                  <tr>
+                    <th style="color: black;"><i class="pi pi-angle-down" (click)="sort('requestid')" style="color: black;"><b>RequestId</b></i></th>
+                    
+                    <th style="color: black;">EmployeeName</th>
+                    <th style="color: black;">PolicyName</th>
+                    
+                   <th style="color: black;">CompanyName</th>
+                   <th style="color: black;">Status</th>
+                    <th style="color: black;">Amount</th>
+
+                    <th style="color: black;">Reason</th>
+                    <th style="color: black;">Description</th>
+                    <th style="color: black;">RequestDate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let request of requestDetails | orderBy: key : reverse | paginate : {itemsPerPage : 20 , currentPage:p}">
+                    <td data-label="Request Id" >{{request.requestId}}</td>
+                    
+                    <td data-label="Employee Name" >{{request.fullname}}</td>
+                    <td data-label="Policy Id" >
+                          {{request.policyDescription}}                
+                    </td>
+                    <td data-label="Company Name" >{{request.companyName}}</td>
+                    <td data-label="Status" >{{request.status}}</td>
+                   <td data-label="Amount" >{{request.amount}}</td>
+
+
+                    <td data-label="Reason" >{{request.reason}}</td>
+                    <td data-label="Description" >{{request.description}}</td>
+                    <td data-label="Request Date" >{{request.requestDate}}</td>
+                    
+                
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+      
+          <div class="paginationzz">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+</div> 
+
+
+

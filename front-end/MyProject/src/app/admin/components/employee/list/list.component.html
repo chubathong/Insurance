@@ -1,0 +1,179 @@
+<title>Employees List</title>
+<div class="content-wrapper">
+     <div class="col-12 col-sm-12 col-md-12">
+              <h1 style="text-align: center;">Employee List</h1>
+                <button class="btn btn-primary addbtn" data-toggle="modal" data-target="#exampleModal">Add Employee</button>
+                <input class="form-control search" type="text" name="username" [(ngModel)]="fullname" 
+                (ngModelChange)="search()" placeholder="enter name to search">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th><i class="pi pi-angle-down"  (click)="sort('id')" style="color: black;"><b>EmployeeId</b></i></th>
+                    <th style="color: black;">Join Date</th>
+                    <th style="color: black;">Fullname</th>
+                    <th style="color: black;">Address</th>
+                    <th style="color: black;">Phone</th>
+                    <th style="color: black;">Role</th>
+ 
+                    <th style="color: black;"></th>
+                    <th style="color: black;">Action</th>
+                    <th style="color: black;"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let employee of employees | orderBy: key : reverse | paginate : {itemsPerPage : 5 , currentPage:p}">
+                    <td data-label="EmployeeId">{{employee.employeeid}}</td>
+                    <td data-label="Join date">{{employee.joindate}}</td>
+                    <td data-label="Full Name">{{employee.fullname}}</td>
+                    <td data-label="Address">{{employee.address}}</td>
+                    <td data-label="Phone Number">{{employee.phonenumber}}</td>
+                    <td data-label="Role">{{employee.role}}</td>
+  
+                    <th>
+                        <button pButton label="Check"  icon="pi pi-check" class="btn btn-primary" [routerLink]="['/admin/employee/list/edit', {id:employee.employeeid}]"></button>
+                        
+                    </th>
+                <!--  <th>
+                        <button type="button" class="btn btn-success" [routerLink]="['/admin/employee/list/details', {id:employee.employeeid}]">Detail</button>
+                    </th>-->  
+
+
+                    <th>
+                      <button pButton icon="pi pi-info"label="Detail" class="btn btn-success" [routerLink]="['/admin/employee/list/details', {id:employee.employeeid}]"></button>
+                  </th>
+                  <th>
+                    <button (click)="confirm(employee.employeeid)"class="btn btn-danger" pButton  icon="pi pi-times" label="Delete" styleClass="p-mr-2"></button>
+                  </th>
+                
+                  </tr>
+                </tbody>
+              </table>
+              <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+
+              <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000" rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>                                 
+              <p-toast></p-toast>
+
+              </div>
+              
+          </div>
+      
+        <div class="pagination" >
+          <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+</div>
+
+
+
+
+<!-- Add -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1>Add Employee</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addFormEmployee" (ngSubmit)="add()" #registerForm="ngForm"  class="was-validated">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="username" required >
+              <div class="invalid-feedback"*ngIf="addFormEmployee.get('username').touched">Please enter Username</div>
+            </div>
+            <label for="password">Password</label>
+            <div class="input-group">
+              <input type="password"  class="form-control" formControlName="password" required>
+              <div class="invalid-feedback"*ngIf="addFormEmployee.get('password').touched">Please enter Password</div>
+            </div>
+            <label for="fullname">Fullname</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="fullname" required>
+              <div class="invalid-feedback"*ngIf="addFormEmployee.get('fullname').touched">Please enter Fullname</div>
+            </div>
+            <label for="email">Email</label>
+            <div class="input-group">
+              <input type="email" class="form-control" formControlName="email" required >
+              <div class="invalid-feedback" *ngIf="addFormEmployee.get('email').touched">Please enter Email</div>
+            </div>
+            <label for="phonenumber">Phone Number</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="phonenumber" required >
+              <div class="invalid-feedback" *ngIf="addFormEmployee.get('phonenumber').touched">Please enter Phone Number at least 10 number</div>
+            </div>
+            <label for="address">Address</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="address" required >
+              <div class="invalid-feedback"*ngIf="addFormEmployee.get('address').touched">Please enter Address</div>
+            </div>
+            <label for="role">Country</label>
+            <div class="input-group">
+              
+              <select class="form-select" required aria-label="select example" formControlName="country">
+                <option value="">Which country do you live?</option>
+                <option value="Viet Nam">Viet Nam</option>
+                <option value="US">US</option>
+                <option value="Korea">Korea</option>
+              </select>
+              <div class="invalid-feedback" *ngIf="addFormEmployee.get('country').touched">Invalid select country</div>
+            </div>
+            <label for="city">City</label>
+    <div class="input-group">
+      
+      <select class="form-select" required aria-label="select example" formControlName="city">
+        <option value="">Which city do you live?</option>
+        <option value="Sai Gon">Sai Gon</option>
+        <option value="New York">New York</option>
+        <option value="Seoul">Seoul</option>
+      </select>
+      <div class="invalid-feedback"*ngIf="addFormEmployee.get('city').touched"> Invalid select city</div>
+    </div>
+
+            <label for="policy">Policy</label>
+            <div class="input-group">
+             
+              <select class="form-select" required aria-label="select example" formControlName="policyid">
+                  <option value="">Which policy do you choose?</option>
+                  <ng-container *ngFor = "let policy of policys">
+                  <option value="{{policy.policyId}}">{{policy.policyDescription}}</option>
+                </ng-container>
+                </select> 
+                <div class="invalid-feedback"*ngIf="addFormEmployee.get('policyid').touched">Please select policy you choose</div>
+              </div>
+              
+              <label for="manager name">Manager Name</label>
+              <div class="input-group">
+                
+                <select class="form-select" required aria-label="select example" formControlName="managerid">
+                  <option value="">Choose your manager</option>
+                  <ng-container *ngFor = "let manager of managers">   
+                  <option value="{{manager.employeeid}}">{{manager.fullname}}</option>
+                </ng-container>
+                </select>
+
+                <div class="invalid-feedback" *ngIf="addFormEmployee.get('managerid').touched">Please select manager you choose</div>
+                </div>
+
+                <label for="role">Role</label>
+                <div class="input-group">
+                <select class="form-select" required aria-label="select example" formControlName="role">
+                  <option value="">Choose role for an account</option>
+                  <option value="manager">Manager</option>
+                  <option value="employee">Employee</option>
+
+                </select>
+                <div class="invalid-feedback" *ngIf="addFormEmployee.get('role').touched">Please select the role</div>
+              </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="add()"[disabled]="registerForm.invalid">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+

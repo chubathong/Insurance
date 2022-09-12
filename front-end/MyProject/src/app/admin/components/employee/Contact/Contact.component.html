@@ -1,0 +1,35 @@
+<title>Contacts List</title>
+<div class="content-wrapper">      
+              <h1 style="text-align: center;">Contact List</h1>
+                <input class="form-control search" type="text" name="username" [(ngModel)]="name" 
+                (ngModelChange)="search()" placeholder="enter name to search">
+
+              
+              <table class="table table-hover" id="htmlData">
+                <thead>
+                  <tr>
+                    <th><i class="pi pi-angle-down"  (click)="sort('contactid')" style="color: black;"><b>Contact id</b></i></th>
+                    <th style="color: black;">Name</th>
+                    <th style="color: black;">Email</th>
+                    <th style="color: black;">Message</th>
+                    <th style="color: black;">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let contact of contacts | orderBy: key : reverse | paginate : {itemsPerPage : 5 , currentPage:p}">
+                    <td data-label="Contact Id">{{contact.contactid}}</td>
+                    <td data-label="Contact Name">{{contact.name}}</td>
+                    <td data-label="Email">{{contact.email}}</td>
+                    <td data-label="Message">{{contact.message}}</td>     
+                    <td data-label="Date">{{contact.date}}</td>          
+                  </tr>
+                </tbody>
+              </table>
+
+</div>
+
+      
+        <div class="paginationzz">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+

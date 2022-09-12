@@ -1,0 +1,506 @@
+
+<!--
+      <html>
+        <head>
+            <style type="text/css">
+                .container-fluid{
+                    width: 200;
+                    margin: auto;
+                    text-align: center;
+                }
+               
+        body {
+          background: #C5E1A5;
+        }
+        form {
+          width: 70%;
+          margin: 60px auto;
+          padding: 0px 120px 80px 120px;
+          text-align: center;
+        }
+        label {
+          display: block;
+          position: relative;
+          margin: 40px 0px;
+        }
+        .label-txt {
+          position: absolute;
+          top: -1.6em;
+          padding: 10px;
+          font-family: sans-serif;
+          font-size: .8em;
+          letter-spacing: 1px;
+          color: rgb(120,120,120);
+          transition: ease .3s;
+        }
+        .input {
+          width: 100%;
+          padding: 10px;
+          background: transparent;
+          border: none;
+          outline: none;
+        }
+       
+        
+
+        .contactus{
+    padding:100px;
+
+    font-size:2.5em;
+    margin-block-start:0.1em;
+    margin-block-end:0.83;
+    background-image: url(/assets/images/bg5.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+}
+#cbb{
+
+margin-top:-8px;
+width:100%;
+float:right;
+font-size:20px;
+animation-name:cnt;
+animation-duration:5s; 
+color:#FFFFFF;
+animation-direction: alternate;
+}
+
+
+@keyframes cnt{
+0%{ 
+width:300px;
+  color: #FFFFFF;
+}
+50%{
+ color:#a39e9e;
+}
+70%{
+ color:#CCC;
+}
+100%{
+ color:#FFFFFF;
+}
+
+}
+.main{
+    padding:100px;
+    margin-bottom:0em;
+    font-size:2.5em;
+    margin-block-start:0.1em;
+    margin-block-end:0.83;
+    background-image: url(/assets/images/bg5.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+}
+
+        
+            </style>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+        </head>-->
+
+<!--
+<title>Check request</title>
+
+        <div  class="main">
+        <div class="contactus">
+          <div id="cbb">
+          <h1>Check Request Employee</h1>
+          
+          </div>
+          </div>
+
+    <div class="container">
+   
+
+  <form *ngIf="updateForm" [formGroup]="updateForm" (ngSubmit)="confirm1()" >
+    <label>
+      <p class="label-txt" style="color: white;">Request id</p>
+      <input type="text" class="input"readonly formControlName="requestId" style="color: cyan; background-color: black;">
+
+    </label>
+    <label>
+      <p class="label-txt" style="color: white;">Request date</p>
+      <input type="text" class="input" readonly formControlName="requestDate" style="color: cyan; background-color: black;">
+
+
+
+    </label>
+
+    <label>
+      <p class="label-txt" style="color: white;">Fullname</p>
+      <input type="text" class="input"readonly formControlName="fullname" style="color: cyan; background-color: black;">
+
+
+    </label>
+
+      <label>
+        <p class="label-txt"style="color: white;">Policy Description</p>
+        <input type="text" class="input"readonly formControlName="policyDescription"style="color: cyan; background-color: black;">
+
+
+      </label>
+      <label>
+       <p class="label-txt" style="color: white;">Status</p>
+        <select  class="input"  formControlName="status" style="color: cyan; background-color: black;">
+          <option value="Approve">Approve</option>
+          <option value="Reject">Reject</option>
+          <option value="Not View" >Not View</option>
+
+        </select>
+      </label>
+
+      <label>
+        <p class="label-txt"style="color: white;">Reason</p>
+        <input type="text" class="input"readonly formControlName="reason" style="color: cyan; background-color: black;">
+
+
+      </label>
+
+      <label>
+        <p class="label-txt"style="color: white;">Company Name</p>
+        <input type="text" class="input"readonly formControlName="companyName" style="color: cyan; background-color: black;">
+
+        
+
+      </label>
+      <label>
+        <p class="label-txt" style="color: white;">Description</p>
+        <input type="text" class="input"readonly formControlName="description" style="color: cyan; background-color: black;">
+
+
+      </label>
+      <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+      <button (click)="confirm1()" label="Update" styleClass="p-mr-2" type="button" class="btn btn-info btn-lg" style="color: white;">Update</button>
+      <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000" rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>                                 
+      <p-toast></p-toast>
+  </form>
+</div>
+
+
+</div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+	<title>Check request employee</title>
+	<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+
+<style type="text/css">
+  .title{
+    margin-top: 50px;
+    margin-left: 20px;
+    font-size: 34px;
+}
+.was-validated{
+    margin-left: 125px;
+}
+.hero{
+    margin-top: 50px;
+}
+
+.breadcrumbs-section{
+    background-color: white;
+}
+.active{
+    margin-left: 100px;
+
+}
+.activee{
+    margin-bottom: -27px;
+    margin-left: 50px;
+
+}
+.abc{
+    margin-top: 40px;
+    margin-right: 100px;
+}
+.breadcrumb{
+
+    background-color: none;
+    background-image: url(/assets/images/bg4.jpg);
+
+}
+
+.table{
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+@media(max-width: 500px) {
+    .table thead{
+        display: none;
+    }
+    .table, .table tbody,.table tr,.table td{
+        display: block;
+        width: 100%;
+    }
+    .table tr{
+        margin-bottom: 15px;
+        text-align: left;
+    }
+    .table td{
+        text-align: right;
+        padding-left: 50%;
+        text-align: right;
+        position: relative;
+    }
+    .table td::before{
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: left;
+
+    }
+}
+
+
+
+.contactus{
+    padding:100px;
+
+    font-size:2.5em;
+    margin-block-start:0.1em;
+    margin-block-end:0.83;
+    background-image: url(/assets/images/bg5.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+}
+#cbb{
+
+margin-top:-8px;
+width:100%;
+float:right;
+font-size:20px;
+animation-name:cnt;
+animation-duration:5s; 
+color:#FFFFFF;
+animation-direction: alternate;
+}
+
+
+@keyframes cnt{
+0%{ 
+width:300px;
+  color: #FFFFFF;
+}
+50%{
+ color:#a39e9e;
+}
+70%{
+ color:#CCC;
+}
+100%{
+ color:#FFFFFF;
+}
+
+}
+.main{
+    padding:100px;
+    margin-bottom:0em;
+    font-size:2.5em;
+    margin-block-start:0.1em;
+    margin-block-end:0.83;
+    background-image: url(/assets/images/bg5.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+}
+.s{
+    margin-left: 200px;
+    font-size: 20px;
+    height: 40px;
+    width: 110px;
+  }
+  .s1{
+    font-size: 20px;
+      height: 40px;
+      width: 80px;
+    }
+  .s2{
+      margin-left: 120px;
+    font-size: 20px;
+    height: 40px;
+      width: 105px;
+    }
+  .s4{
+    font-size: 20px;
+      height: 40px;
+      
+      width: 80px;
+    }
+  .s3{
+    font-size: 20px;
+      height: 40px;
+      width: 60px;
+      margin-left: 145px;
+  }
+  label {
+          display: block;
+          position: relative;
+          margin: 40px 0px;
+        }
+        .label-txt {
+          position: absolute;
+          top: -1.6em;
+          padding: 10px;
+          font-family: sans-serif;
+          font-size: .8em;
+          letter-spacing: 1px;
+          color: rgb(120,120,120);
+          transition: ease .3s;
+        }
+        .input {
+          width: 100%;
+          padding: 10px;
+          background: transparent;
+          border: none;
+          outline: none;
+        }
+        form {
+          width: 70%;
+          margin: 60px auto;
+          padding: 0px 120px 80px 120px;
+          text-align: center;
+        }
+
+</style>
+</head>
+
+
+<div  class="main">
+  <div class="contactus">
+    <div id="cbb">
+    <h1>Check Request Employee</h1>
+    
+    </div>
+    </div>
+  
+  
+  
+  
+   <div class="container" >
+  
+      <ol class="abc">
+          <li class="breadcrumb-item activee" style="color: white;"><a href="/manager/home" style="color: white;font-size: large;">Home</a></li>
+          <li class="breadcrumb-item active" style="color: white;font-size: large;">Request Employees / Check</li>
+    
+      </ol>
+  
+          <div class="col-12 col-sm-12 col-md-12">   
+
+            <form *ngIf="updateForm" [formGroup]="updateForm" (ngSubmit)="confirm1()" >
+              <label>
+                <p class="label-txt" style="color: white;">Request id</p>
+                <input type="text" class="input"readonly formControlName="requestId" style="color: cyan; background-color: black;">
+          
+              </label>
+              <label>
+                <p class="label-txt" style="color: white;">Request date</p>
+                <input type="text" class="input" readonly formControlName="requestDate" style="color: cyan; background-color: black;">
+          
+          
+          
+              </label>
+          
+              <label>
+                <p class="label-txt" style="color: white;">Fullname</p>
+                <input type="text" class="input"readonly formControlName="fullname" style="color: cyan; background-color: black;">
+          
+          
+              </label>
+          
+                <label>
+                  <p class="label-txt"style="color: white;">Policy Description</p>
+                  <input type="text" class="input"readonly formControlName="policyDescription"style="color: cyan; background-color: black;">
+          
+          
+                </label>
+                <label>
+                 <p class="label-txt" style="color: white;">Status</p>
+                  <select  class="input"  formControlName="status" style="color: cyan; background-color: black;">
+                    <option value="Approve">Approve</option>
+                    <option value="Reject">Reject</option>
+                    <option value="Not View" >Not View</option>
+          
+                  </select>
+                </label>
+          
+                <label>
+                  <p class="label-txt"style="color: white;">Reason</p>
+                  <input type="text" class="input"readonly formControlName="reason" style="color: cyan; background-color: black;">
+          
+          
+                </label>
+          
+                <label>
+                  <p class="label-txt"style="color: white;">Company Name</p>
+                  <input type="text" class="input"readonly formControlName="companyName" style="color: cyan; background-color: black;">
+          
+                  
+          
+                </label>
+                <label>
+                  <p class="label-txt" style="color: white;">Description</p>
+                  <input type="text" class="input"readonly formControlName="description" style="color: cyan; background-color: black;">
+          
+          
+                </label>
+                <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+                <button (click)="confirm1()" label="Update" styleClass="p-mr-2" type="button" class="btn btn-info btn-lg" style="color: white;">Update</button>
+                <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000" rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>                                 
+                <p-toast></p-toast>
+            </form>
+
+            
+
+
+     
+        </div>
+</div>
+
+</div>
+
+
+
+

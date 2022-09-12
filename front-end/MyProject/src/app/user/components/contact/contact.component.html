@@ -1,0 +1,65 @@
+<head>
+  <title>Contact us</title>
+	<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+</head>
+    
+
+
+<body>
+  <div  class="main">
+  <div class="contactus">
+    <div id="cbb">
+    <h1>Contact Us</h1>
+    
+    </div>
+    </div>
+    <div class="container" >
+      <ol class="abc">
+        <li class="breadcrumb-item activee" ><a href="#" style="color: white;font-size: large;">Home</a></li>
+        <li class="breadcrumb-item active" style="color: white;font-size: large;">Contact</li>
+    </ol>
+
+      
+            <form [formGroup]="addFormContact" (ngSubmit)="confirm1()" #contactForm="ngForm" class="was-validated" >
+  
+    
+    
+    
+                <div class="mb-3">
+                    <textarea class="form-control " id="validationTextarea" name="message"
+                       
+                      placeholder="Your message" formControlName="message"
+                     required  rows="8"></textarea>
+                    <div class="invalid-feedback"style="font-size: medium;" *ngIf="addFormContact.get('message').touched">
+                      Please enter your message.
+                    </div>
+                  </div>
+    
+
+
+                <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+                <button (click)="confirm1()" label="Send"  type="button" class="btn btn-info btn-lg" [disabled]="contactForm.invalid">Send Contact</button>
+                <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000" rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>                                 
+                <p-toast></p-toast>
+    
+            </form>
+          </div>
+        </div>
+        </body>
+
+      
+
+
+        
+
+
+
+
+

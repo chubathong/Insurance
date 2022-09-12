@@ -1,0 +1,94 @@
+
+
+
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <title>Profile</title>
+              <!-- Font Awesome -->
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+            <!-- Google Fonts -->
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+            <!-- Bootstrap core CSS -->
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+            <!-- Material Design Bootstrap -->
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+            </head>
+            
+            <body class="bg-white" >
+              <div class="container" >
+                   <div class="row d-flex justify-content-center">
+                        <div class="col-md-10 mt-5 pt-5">
+                           <div class="row z-depth-3">
+                               <div class="col-sm-4 bg-info rounded-left">
+                                <div class="card-block text-center text-white">
+                                  <h6 class="text-muted">
+                                    <img src="{{employee.photo}}" width="500" height="500"></h6>
+                                    <a [routerLink]="['/manager/profile/updatephoto', {id:employee.employeeid}]">
+                                      <i class="pi pi-camera fa-4x " style="color: white;"></i></a>  
+                                    <h2 class="font-weight-bold mt-4">{{employee.fullname}}</h2>
+                                    <p>{{employee.role}}</p>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-8 bg-white rounded-right">
+                                  <h3 class="mt-3 text-center">Information</h3>
+                                  <hr class="bg-primary mt-0 w-25">
+                                   <div class="row">
+                                      <div class="col-sm-6">
+                                          <p class="font-weight-bold">Email:</p>
+                                           <h6 class=" text-muted">{{employee.email}}</h6>
+                                      </div>
+                                      <div class="col-sm-6">
+                                          <p class="font-weight-bold">Phone:</p>
+                                           <h6 class="text-muted">{{employee.phonenumber}}</h6>
+                                      </div>
+                                  </div>
+                                    <h4 class="mt-3 text-center" >Details</h4>
+                                    <hr class="bg-primary">
+                                   <div class="row">
+                                      <div class="col-sm-6">
+                                           <p class="font-weight-bold">Address:</p>
+                                            <h6 class="text-muted">{{employee.address}}</h6>
+                                      </div>
+                                      <div class="col-sm-6">
+                                          <p class="font-weight-bold">Join Date:</p>
+                                          <h6 class="text-muted">{{employee.joindate}}</h6>
+                                      </div>
+                                      <div class="col-sm-6">
+                                        <p class="font-weight-bold">Country:</p>
+                                        <h6 class="text-muted">{{employee.country}}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <p class="font-weight-bold">City:</p>
+                                      <h6 class="text-muted">{{employee.city}}</h6>
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <p class="font-weight-bold">Policy status:</p>
+                                    <h6 class="text-muted">{{employee.policystatus}}</h6>
+                                </div>
+                                  </div>
+                                   <hr class="bg-primary">
+                                   <div class="text-center">
+
+                                   <button [routerLink]="['/manager/profile/updateprofile', {id:employee.employeeid}]" 
+                                   label="Edit Profile"  type="button" class="btn btn-info btn-lg" >Edit Profile</button>
+                                   <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+
+
+                              
+
+                                   <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000" rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>
+                                   
+                                   <p-toast></p-toast>
+                                  </div>
+                                  </div>
+                           </div>
+                        </div>
+                    </div>
+              </div>
+              <br><br>
+            </body>
+            </html>
+            
+            

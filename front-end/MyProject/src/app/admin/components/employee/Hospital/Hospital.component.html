@@ -1,0 +1,110 @@
+<title>Hospitals List</title>
+  <div class="content-wrapper">
+     
+      
+          <div class="col-12 col-sm-6 col-md-12">
+            <h1 style="text-align: center;">Hospital List</h1>
+                <button class="btn btn-primary addbtn" data-toggle="modal" data-target="#exampleModal">Add Hospital</button>
+                <input class="form-control search"  type="text" name="username" [(ngModel)]="hospitalname" 
+                (ngModelChange)="search()" placeholder="enter Hospital name to search">
+
+     
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th><i class="pi pi-angle-down"  (click)="sort('id')" style="color: black;"><b>Hospital Id</b></i></th>
+                    <th style="color: black;">Hospital Name</th>
+                    <th style="color: black;">Phone Number</th>
+                    <th style="color: black;">Location</th>
+                    <th style="color: black;">Url</th>
+                    <th style="color: black;"></th>
+                    <th style="color: black;">Action</th>
+                    <th style="color: black;"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let hospital of hospitals | orderBy: key : reverse | paginate : {itemsPerPage : 5 , currentPage:p}">
+                    <td data-label="Hospital Id">{{hospital.hospitalId}}</td>
+                    <td data-label="Hospital Name">{{hospital.hospitalname}}</td>
+                    <td data-label="Phone Number">{{hospital.phoneNumber}}</td>
+                    <td data-label="Location">{{hospital.location}}</td>
+                    <td data-label="Url">{{hospital.url}}</td>
+
+
+
+                    <th>
+                      <button pButton label="Edit"  icon="pi pi-pencil" class="btn btn-primary" [routerLink]="['/admin/employee/hospital/edit', {id:hospital.hospitalId}]"></button>
+                      
+                  </th>
+                  <th>
+                    <button pButton icon="pi pi-info"label="Detail" class="btn btn-success" [routerLink]="['/admin/employee/hospital/details', {id:hospital.hospitalId}]"></button>
+                </th>
+                <th>
+                  <button (click)="confirm(hospital.hospitalId)"class="btn btn-danger" pButton  icon="pi pi-times" label="Delete" styleClass="p-mr-2"></button>
+                </th>
+                
+                  </tr>
+                </tbody>
+              </table>
+              <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+
+              <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000" rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>                                 
+              <p-toast></p-toast>
+              </div>
+              
+          </div>
+      
+        <div class="paginationzz">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+     
+
+<!-- Modal Add-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1>Add Hospital</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addFormHospital" (ngSubmit)="add()"#registerForm="ngForm"  class="was-validated">
+          <div class="form-group">
+            <label for="username">Hospital Id</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="hospitalId" required >
+              <div class="invalid-feedback"*ngIf="addFormHospital.get('hospitalId').touched">Please enter Hospital Id</div>
+            </div>
+            <label for="fullname">Hospital Name</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="hospitalname" required>
+              <div class="invalid-feedback" *ngIf="addFormHospital.get('hospitalname').touched">Please enter Hospital Name</div>
+            </div>
+            <label for="phoneNumber">Phone Number</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="phoneNumber" required >
+              <div class="invalid-feedback"*ngIf="addFormHospital.get('phoneNumber').touched">Please enter Phone Number</div>
+            </div>
+            <label for="location">Location</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="location" required >
+              <div class="invalid-feedback" *ngIf="addFormHospital.get('location').touched">Please enter Location</div>
+            </div>
+            <label for="url">Url</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="url" required >
+              <div class="invalid-feedback" *ngIf="addFormHospital.get('url').touched">Please enter Url</div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="add()"[disabled]="registerForm.invalid">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

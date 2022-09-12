@@ -1,0 +1,174 @@
+<html>
+<head>
+    <style type="text/css">
+        .container-fluid{
+            width: 200;
+            margin: auto;
+            text-align: center;
+        }
+       
+body {
+  background: #C5E1A5;
+}
+form {
+  width: 70%;
+  margin: 60px auto;
+  padding: 0px 120px 80px 120px;
+  text-align: center;
+}
+label {
+  display: block;
+  position: relative;
+  margin: 40px 0px;
+}
+.label-txt {
+  position: absolute;
+  top: -1.6em;
+  padding: 10px;
+  font-family: sans-serif;
+  font-size: .8em;
+  letter-spacing: 1px;
+  color: rgb(120,120,120);
+  transition: ease .3s;
+}
+.input {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.line-box {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: #BCBCBC;
+}
+
+.line {
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #8BC34A;
+  transition: ease .6s;
+}
+
+.input:focus + .line-box .line {
+  width: 100%;
+}
+
+.label-active {
+  top: -3em;
+}
+
+button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: rgb(220,220,220);
+  font-weight: bold;
+  color: rgb(120,120,120);
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: ease .3s;
+}
+
+button:hover {
+  background: #8BC34A;
+  color: #ffffff;
+}
+
+    </style>
+</head>
+<title>Update Policy</title>
+      
+<section class="content">
+  <div class="container-fluid">
+ 
+      <div class="col-md-12 float-right">
+          <div class="container register-form">
+            <h1>Update Policy</h1>
+              <form *ngIf="updateForm" [formGroup]="updateForm" (ngSubmit)="confirm2()" #registerForm="ngForm"  class="was-validated">
+                  <label>
+                    <p class="label-txt">Policy Name</p>
+                    <input type="text" class="input" formControlName="policyName" required>
+                    <div class="invalid-feedback">Please enter Policy Name</div>
+                    <div class="line-box">
+                      <div class="line"></div>
+                    </div>
+                  </label>
+                  <label>
+                    <p class="label-txt">Policy Description</p>
+                    <input type="text" class="input" formControlName="policyDescription" required>
+                    <div class="invalid-feedback">Please enter Policy Description</div>
+                    <div class="line-box">
+                      <div class="line"></div>
+                    </div>
+                  </label>
+                  <label>
+                    <p class="label-txt">Amount</p>
+                    <input type="number" class="input" formControlName="amount" required>
+                    <div class="invalid-feedback">Please enter Amount</div>
+                    <div class="line-box">
+                      <div class="line"></div>
+                    </div>
+                  </label>
+                  <label>
+                      <p class="label-txt">Emi</p>
+                      <input type="number" class="input" formControlName="emi" required>
+                      <div class="invalid-feedback">Please enter Emi</div>
+                      <div class="line-box">
+                        <div class="line"></div>
+                      </div>
+                    </label>
+                    <label>
+                      <p class="label-txt">Duration</p>
+                      <input type="number" class="input" formControlName="duration" required>
+                      <div class="invalid-feedback">Please enter Duration</div>
+                      <div class="line-box">
+                        <div class="line"></div>
+                      </div>
+                    </label>
+
+                    <label>
+                      <p class="label-txt">Company Name</p>
+                      <select class="input" required aria-label="select example" formControlName="companyId">
+                        <option value="">Which company do you choose?</option>
+                        <ng-container *ngFor = "let company of companies">   
+                        <option value="{{company.companyId}}">{{company.companyName}}</option>
+                      </ng-container>
+                      </select>
+                      <div class="invalid-feedback">Please enter Company </div>
+                      <div class="line-box">
+                        <div class="line"></div>
+                      </div>
+                    </label>
+
+                    <label>
+                      <p class="label-txt">Hospital Name</p>
+                      <select class="input" required aria-label="select example" formControlName="hospitalId">
+                        <option value="">Which company do you choose?</option>
+                        <ng-container *ngFor = "let hospital of hospitals">   
+                        <option value="{{hospital.hospitalId}}">{{hospital.hospitalname}}</option>
+                      </ng-container>
+                      </select>
+                      <div class="invalid-feedback">Please enter Hospital</div>
+                      <div class="line-box">
+                        <div class="line"></div>
+                      </div>
+                    </label>
+
+                  <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+                  <button (click)="confirm2()" label="Update"  type="button" class="btn btn-info btn-lg" [disabled]="registerForm.invalid">Update</button>
+                  <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000" rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>                                 
+                  <p-toast></p-toast>
+                </form>
+              </div>
+              </div>
+</div>
+</section>

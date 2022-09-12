@@ -1,0 +1,79 @@
+<head>
+  <title>Contact us</title>
+	<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+</head>
+    
+
+
+<body>
+  <div  class="main">
+  <div class="contactus">
+    <div id="cbb">
+    <h1>Contact Us</h1>
+    
+    </div>
+    </div>
+    <div class="container" >
+      <ol class="abc">
+        <li class="breadcrumb-item activee" ><a href="#" style="color: white;font-size: large;">Home</a></li>
+        <li class="breadcrumb-item active" style="color: white;font-size: large;">Contact</li>
+    </ol>
+
+      
+            <form [formGroup]="addFormContact" (ngSubmit)="add()" #contactForm="ngForm" class="was-validated" >
+                <div class="mb-3">
+                    <label for="validationTextarea" class="form-label" style="color: white;font-size: x-large;font-style: italic;">Contact with us</label><br>
+                    <textarea class="form-control " id="validationTextarea" name="name"
+                    
+                     [(ngModel)]="name" placeholder="Your name" formControlName="name"
+                     required></textarea>
+                     <div class="invalid-feedback"style="font-size: medium;"> Please enter your name </div>
+                  </div>
+    
+    
+                  <div class="mb-3">
+                    <input class="form-control " id="validationTextarea" name="email" type="email"
+                    
+                      placeholder="Email*"  formControlName="email"
+                     required>
+                    <div class="invalid-feedback"style="font-size: medium;">
+                      Please enter Your email and needs to be a valid email..
+                    </div>
+                  </div>
+    
+                <div class="mb-3">
+                    <textarea class="form-control " id="validationTextarea" name="message"
+                       
+                      placeholder="Your message" formControlName="message"
+                     required  rows="8"></textarea>
+                    <div class="invalid-feedback"style="font-size: medium;">
+                      Please enter your message.
+                    </div>
+                  </div>
+    
+                <button type="submit" class="button is-large is-info"
+                [disabled]="contactForm.invalid">
+                    Send
+                </button>
+    
+            </form>
+          </div>
+        </div>
+        </body>
+
+      
+
+
+        
+
+
+
+
+

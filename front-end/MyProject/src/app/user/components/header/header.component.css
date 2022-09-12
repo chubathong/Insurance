@@ -1,0 +1,17 @@
+
+.navbar{
+    position: fixed;
+    margin-bottom: 60px;
+    height: 42px;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.navbar-brand{
+    margin-top: 9px;
+}
+
+.hello{
+    margin-left: 100px;
+}
+

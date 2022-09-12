@@ -1,0 +1,91 @@
+<head>
+	<title>Request Tracking</title>
+	<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+</head>
+
+<div  class="main">
+<div class="contactus">
+  <div id="cbb">
+  <h1>Request Tracking List</h1>
+  
+  </div>
+  </div>
+
+
+
+
+ <div class="container" >
+
+    <ol class="abc">
+        <li class="breadcrumb-item activee" ><a href="#" style="color: white;font-size: large;">Home</a></li>
+        <li class="breadcrumb-item active" style="color: white;font-size: large;">Request Tracking</li>
+    </ol>
+
+        <div class="col-12 col-sm-12 col-md-12">    
+
+
+          <input class="s" type="text"  [(ngModel)]="fullname" 
+          (ngModelChange)="search()" >&nbsp;
+
+          <input class="s1" type="text" [(ngModel)]="policyDescription" 
+          (ngModelChange)="searchpolicy()" >&nbsp;
+
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input class="s2" type="text" [(ngModel)]="companyName" 
+          (ngModelChange)="searchcompanyname()" >&nbsp;
+
+          <input class="s4" type="text" [(ngModel)]="status" p
+          (ngModelChange)="searchstatus()" >
+          <table class="table table-hover" >
+            <thead>
+              <tr>
+                <th style="color: white;"><i class="pi pi-angle-down" (click)="sort('requestid')" style="color: white;"><b>RequestId</b></i></th>
+                <th style="color: white;"><b>RequestDate</b></th>
+                <th style="color: white;"><b>EmployeeName</b></th>
+                <th style="color: white;"><b>Policy Name</b></th>
+                <th style="color: white;"><b>CompanyName</b></th>
+                <th style="color: white;"><b>Status</b></th>
+                <th style="color: white;"><b>Amount</b></th>
+                <th style="color: white;"><b>Emi</b></th>
+                <th style="color: white;"><b>Reason</b></th>
+                <th style="color: white;"><b>Description</b></th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let request of requestemployees | orderBy: key : reverse | paginate : {itemsPerPage : 5 , currentPage:p}">
+                <td data-label="Request Id" style="color: white;">{{request.requestId}}</td>
+                <td data-label="Request Date" style="color: white;">{{request.requestDate}}</td>
+                <td data-label="Employee Id" style="color: white;">{{employee.fullname}}</td>
+                <td data-label="Policy Id" style="color: white;">
+                      {{request.policyDescription}}                
+                </td>
+                <td data-label="Emi" style="color: white;">{{request.companyName}}</td>
+                <td data-label="Status" style="color: white;">{{request.status}}</td>
+               <td data-label="Amount" style="color: white;">{{request.amount}}</td>
+                <td data-label="Emi" style="color: white;">{{request.emi}}</td>
+
+                <td data-label="Reason" style="color: white;">{{request.reason}}</td>
+                <td data-label="Description" style="color: white;">{{request.description}}</td>
+            
+              </tr>
+            </tbody>
+          </table>
+       
+          </div>
+                    <div class="pagination" >
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+  </div>
+</div>
+  
+     
+
+
+

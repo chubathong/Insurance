@@ -1,0 +1,55 @@
+<head>
+   <title>Login</title>
+   <script src='https://www.google.com/recaptcha/api.js'></script>
+   <script src='https://www.google.com/recaptcha/api.js?hl=es'></script>
+
+ </head>
+ 
+<section class="container-fluid bg">
+   <section class="row justify-content-center">
+      <section class="col-12 col-sm-6 col-md-3">
+         <form (ngSubmit)="login()"  [formGroup]="loginForm" class="was-validated">
+            <div class="register">Login</div>
+       
+            <div class="form-group">
+              <label for="validationDate" class="form-label" >Username</label>
+              <input class="form-control" id="validationTextarea" type="text"  formControlName="username"
+              [(ngModel)]="username" placeholder="Enter your username"
+              required>
+               <div class="invalid-feedback" *ngIf="loginForm.get('username').touched"> Please enter Username</div>
+            </div>
+      
+            <div class="form-group">
+               <label for="validationDate" class="form-label" >Password</label>
+               <input class="form-control" type="password" placeholder="Enter your password" formControlName="password" required>
+               <div class="invalid-feedback"*ngIf="loginForm.get('password').touched && loginForm.get('password').invalid">Please enter Password</div>
+             </div>
+ 
+            <button type="submit" class="btn-block button" id="submit"
+            [disabled]="loginForm.invalid" >
+               Sign-in
+            </button>
+
+            <simple-notifications></simple-notifications>
+
+            <a [routerLink]="['/signup']">Create an account?</a>
+            <a [routerLink]="['/forgotpassword']"> Forgot Password</a>
+           </form>
+      </section>
+   </section>
+
+   </section>
+
+
+
+
+
+   
+
+
+
+
+
+
+
+

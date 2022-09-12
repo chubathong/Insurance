@@ -1,0 +1,144 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  
+</head>
+<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <div class="wrapper">
+  
+    <!-- Preloader -->
+    <div class="preloader flex-column justify-content-center align-items-center">
+      <img class="animation__wobble" src="assets/admin/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    </div>
+  
+    <!-- Navbar -->
+
+    
+    <!-- /.navbar -->
+  
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <a [routerLink]="['/admin']"class="brand-link">
+        <img src="assets/images/health-insurance.png" alt="Bootstrap 5 Logo" width="30" height="24" class="d-inline-block align-top"/>
+        <span class="brand-text font-weight-light"> Health Insurance</span>
+      </a>
+  
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="assets/admin/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a [routerLink]="['/admin/employee/profile']" class="d-block">{{employee.fullname}}</a>
+          </div>
+        </div>
+        <!-- Sidebar user panel (optional) -->
+
+  
+        <!-- SidebarSearch Form -->
+
+  
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
+            <li class="nav-item menu-open">
+              <a  class="nav-link active">
+                
+                <p>
+                  Menu
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a [routerLink]="['/admin/employee/list']" class="nav-link">
+                    
+                    <p>Employee List</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a  [routerLink]="['/admin/employee/company']"class="nav-link">
+                    
+                    <p>Company</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a  [routerLink]="['/admin/employee/hospital']"class="nav-link">
+                    
+                    <p>Hospital</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a  [routerLink]="['/admin/employee/policy']"class="nav-link">
+                    
+                    <p>Policy</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a  [routerLink]="['/admin/employee/contact']"class="nav-link">
+                    
+                    <p>Contact</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a  [routerLink]="['/admin/employee/feedback']"class="nav-link">
+                    
+                    <p>Feedback</p>
+                  </a>
+                </li>
+              <li class="nav-item">
+                  <a [routerLink]="['/admin/employee/report']" class="nav-link">
+                  
+                    <p>Report</p>
+                  </a>
+                </li> 
+                <li class="nav-item">
+                  <a  [routerLink]="['/logout']" style="font-size: medium;color: cyan;" class="nav-link">
+                    <p>Log out<p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+  
+    <!-- Content Wrapper. Contains page content -->
+
+  </div>
+
+
+    
+    <router-outlet></router-outlet>
+
+
+
+
+              <hr class="mb-4">
+              <div class="footer">
+                  <div class="col-md-7 col-lg-8">
+                       <p >Copyright @2021 All rights reserved by:
+                           <a black class="text-warning">
+                               <strong>Health Insurance</strong>
+                           </a>
+                           </p>
+                  </div>
+
+              </div>
+  
+
+
+
+
+  

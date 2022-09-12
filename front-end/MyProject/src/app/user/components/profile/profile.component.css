@@ -1,0 +1,30 @@
+.breadcrumb{
+    margin-left: 55px;
+    background-color: white;
+}
+
+#cbb{
+    margin-top:-10px;
+    width:100%;
+    float:right;
+    font-size:50px;
+    animation-name:cnt;
+    animation-duration:4s; 
+    color:#FFFFFF;
+    animation-direction: alternate;
+}
+.container{
+    margin-bottom: 10px;
+}
+.main{
+    
+    padding:100px;
+    margin-bottom:0em;
+    font-size:1em;
+    margin-block-start:0.1em;
+    margin-block-end:0.83;
+    background-image: url(/assets/images/pic62.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}

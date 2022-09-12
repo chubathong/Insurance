@@ -1,0 +1,11 @@
+.hero{
+    background-image: url('/assets/images/health.jpg') !important;
+    background-size: cover;
+    background-position: center center;
+}
+.carousel-control-transition{
+    opacity :.15s ease;
+}
+.home{
+    margin-top: 50px;
+}

@@ -1,0 +1,107 @@
+<head>
+  <title>Register</title>
+</head>
+<section class="hero bg">
+    <div class="container">
+      <div class="content"><br><br><br><br>
+        <form [formGroup]="addFormEmployee" (ngSubmit)="add()" #registerForm="ngForm"  class="was-validated">
+          <div class="register">Register</div>
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Username</span>
+              <input type="text" placeholder="Enter your username" formControlName="username"
+              
+               required>
+              <div class="invalid-feedback"*ngIf="addFormEmployee.get('username').touched">Please enter Username</div>
+           <!--  <input type="button" value="check" (click)="checkusername()">
+          [(ngModel)]="username"--> 
+              
+            </div>
+    
+            <div class="input-box">
+              <span class="details">Password</span>
+              <input type="password" placeholder="Enter your password" formControlName="password" required>
+              <div class="invalid-feedback"*ngIf="addFormEmployee.get('password').touched">Please enter Password</div>
+            </div>
+    
+    
+            <div class="input-box">
+              <span class="details">Full Name</span>
+              <input type="text" placeholder="Enter your name" formControlName="fullname"
+              [(ngModel)]="fullname"
+              required>
+              <div class="invalid-feedback"*ngIf="addFormEmployee.get('fullname').touched">Please enter Fullname</div>
+            </div>
+            <div class="input-box">
+              <span class="details">Email</span>
+              <input type="email" placeholder="Enter your email" formControlName="email" required>
+              <div class="invalid-feedback" *ngIf="addFormEmployee.get('email').touched">Please enter Email</div>
+            </div>
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              <input type="text" placeholder="Enter your number " formControlName="phonenumber" required>
+              <div class="invalid-feedback" *ngIf="addFormEmployee.get('phonenumber').touched">Please enter Phone Number at least 10 number</div>
+            </div>
+    
+            <div class="input-box">
+              <span class="details">Address</span>
+              <input type="text" placeholder="Enter your address" formControlName="address" required>
+              <div class="invalid-feedback"*ngIf="addFormEmployee.get('address').touched">Please enter Address</div>
+            </div>
+    
+    
+    
+            <div class="input-box">
+              <select  class="form-select" data-style="btn-primary"  required  formControlName="country"
+              
+              >
+                <option value="">Which country do you live?</option>
+                <option value="Viet Nam">Viet Nam</option>
+                <option value="US">US</option>
+                <option value="Korea">Korea</option>
+              </select>
+              <div class="invalid-feedback" *ngIf="addFormEmployee.get('country').touched">Invalid select country</div>
+            </div>
+    
+    <div class="input-box">
+      <select class="form-select" required aria-label="select example" formControlName="city">
+        <option value="">Which city do you live?</option>
+        <option value="Sai Gon">Sai Gon</option>
+        <option value="New York">New York</option>
+        <option value="Seoul">Seoul</option>
+      </select>
+      <div class="invalid-feedback"*ngIf="addFormEmployee.get('city').touched"> Invalid select city</div>
+    </div>
+
+    <div class="input-box">
+      <span class="details">Policy</span>
+      <select class="form-select" required aria-label="select example" formControlName="policyid">
+          <option value="">Which policy do you choose?</option>
+          <ng-container *ngFor = "let policy of policys">
+          <option value="{{policy.policyId}}">{{policy.policyDescription}}</option>
+        </ng-container>
+        </select> 
+        <div class="invalid-feedback"*ngIf="addFormEmployee.get('policyid').touched">Please select policy you choose</div>
+      </div>
+      
+      <div class="input-box">
+        <span class="details">Manager name</span>
+        <select class="form-select" required aria-label="select example" formControlName="managerid">
+          <option value="">Choose your manager?</option>
+          <ng-container *ngFor = "let manager of managers">   
+          <option value="{{manager.employeeid}}">{{manager.fullname}}</option>
+        </ng-container>
+        </select>
+          <div class="invalid-feedback" *ngIf="addFormEmployee.get('managerid').touched">Please select manager you choose</div>
+        </div>
+
+          </div>
+          <button type="submit" class="btn-block button" id="submit"
+          [disabled]="registerForm.invalid">
+             Sign-up
+          </button>
+        </form>
+      </div>
+    </div>
+    </section>
+    

@@ -1,0 +1,102 @@
+<title>Companies List</title>
+<div class="content-wrapper">
+            <div class="col-12 col-sm-6 col-md-12">
+              <h1 style="text-align: center;">Company List</h1>
+                  <button class="btn btn-primary addbtn" data-toggle="modal" data-target="#exampleModal">Add Company</button>
+                  <input class="form-control search" type="text" name="username" [(ngModel)]="CompanyName" 
+                  (ngModelChange)="search()" placeholder="enter Company name to search">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th><i class="pi pi-angle-down"  (click)="sort('id')" style="color: black;"><b>Company Id</b></i></th>
+                    <th style="color: black;">Company Name</th>
+                    <th style="color: black;">Address</th>
+                    <th style="color: black;">Phone</th>
+                    <th style="color: black;">Url</th>
+                    <th style="color: black;"></th>
+                    <th style="color: black;">Action</th>
+                    <th style="color: black;"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let company of companies | orderBy: key : reverse | paginate : {itemsPerPage : 5 , currentPage:p}">
+                    <td data-label="Company Id">{{company.companyId}}</td>
+                    <td data-label="Company Name">{{company.companyName}}</td>
+                    <td data-label="Address">{{company.address}}</td>
+                    <td data-label="Phone">{{company.phone}}</td>
+                    <td data-label="Url">{{company.url}}</td>
+ 
+
+                    <th>
+                      <button pButton label="Edit"  icon="pi pi-pencil" class="btn btn-primary" [routerLink]="['/admin/employee/company/edit', {id:company.companyId}]"></button>
+                      
+                  </th>
+                  <th>
+                    <button pButton icon="pi pi-info"label="Detail" class="btn btn-success" [routerLink]="['/admin/employee/company/details', {id:company.companyId}]"></button>
+                </th>
+                <th>
+                  <button (click)="confirm(company.companyId)"class="btn btn-danger" pButton  icon="pi pi-times" label="Delete" styleClass="p-mr-2"></button>
+                </th>
+
+
+                  </tr>
+                </tbody>
+              </table>
+              <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+
+              <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000" rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>                                 
+              <p-toast></p-toast>
+              </div>
+              
+          </div>
+      
+        <div class="pagination">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+
+
+
+<!-- Modal Add-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1>Add Company</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addFormCompany" (ngSubmit)="add()" #registerForm="ngForm"  class="was-validated">
+          <div class="form-group">
+            <label for="username">Company Name</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="companyName" required >
+              <div class="invalid-feedback" *ngIf="addFormCompany.get('companyName').touched">Please enter Company Name</div>
+            </div>
+            <label for="fullname">Address</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="address" required>
+              <div class="invalid-feedback"*ngIf="addFormCompany.get('address').touched">Please enter Address</div>
+            </div>
+            <label for="phone">Phone</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="phone" required >
+              <div class="invalid-feedback"*ngIf="addFormCompany.get('phone').touched">Please enter Phone</div>
+            </div>
+            <label for="url">Url</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="url" required >
+              <div class="invalid-feedback"*ngIf="addFormCompany.get('url').touched">Please enter Url</div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="add()"[disabled]="registerForm.invalid" >Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

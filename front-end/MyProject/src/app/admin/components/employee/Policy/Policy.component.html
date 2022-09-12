@@ -1,0 +1,123 @@
+<title>Policies List</title>
+<div class="content-wrapper">      
+              <h1 style="text-align: center;">Policy List</h1>
+              <button class="btn btn-primary addbtn" data-toggle="modal" data-target="#exampleModal">Add Policy</button>
+                <input class="form-control search" type="text" name="username" [(ngModel)]="policyName" 
+                (ngModelChange)="search()" placeholder="enter Policy name to search">
+
+                <div class="col-12 col-sm-12 col-md-12">
+              <table class="table table-hover" id="htmlData">
+                <thead>
+                  <tr>
+                    <th><i class="pi pi-angle-down"  (click)="sort('id')" style="color: black;"><b>PolicyId</b></i></th>
+                    <th style="color: black;">Policy Name</th>
+
+
+                    <th style="color: black;">Company Name</th>
+                    <th style="color: black;">Hospital Name</th>
+                    <th style="color: black;"></th>
+                    <th style="color: black;">Action</th>
+                    <th style="color: black;"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let policy of policys | orderBy: key : reverse | paginate : {itemsPerPage : 5 , currentPage:p}">
+                    <td data-label="Policy Id">{{policy.policyId}}</td>
+                    <td data-label="Policy Name">{{policy.policyName}}</td>
+
+
+                    <td data-label="Emi">{{policy.companyName}}</td>
+                    <td data-label="Duration">{{policy.hospitalName}}</td>
+
+
+                
+
+                    <th>
+                      <button pButton label="Edit"  icon="pi pi-pencil" class="btn btn-primary" [routerLink]="['/admin/employee/policy/edit', {id:policy.policyId}]"></button>
+                      
+                  </th>
+                  <th>
+                    <button pButton icon="pi pi-info"label="Detail" class="btn btn-success" [routerLink]="['/admin/employee/policy/details', {id:policy.policyId}]"></button>
+                </th>
+                <th>
+                  <button (click)="confirm(policy.policyId)" class="btn btn-danger" pButton  icon="pi pi-times" label="Delete" styleClass="p-mr-2"></button>
+                </th>
+                  </tr>
+                </tbody>
+              </table>
+              <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+
+              <p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" [position]="position" [baseZIndex]="10000" rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>                                 
+              <p-toast></p-toast>
+            </div>
+</div>
+
+      
+        <div class="paginationzz">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+
+
+<!-- Modal Add-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Policy</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addFormPolicy" (ngSubmit)="add()" #registerForm="ngForm"  class="was-validated">
+          <div class="form-group">
+            <label for="policyName">Policy Name</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="policyName" required >
+              <div class="invalid-feedback" *ngIf="addFormPolicy.get('policyName').touched">Please enter Policy Name</div>
+            </div>
+            <label for="policyDescription">Policy Description</label>
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="policyDescription" required>
+              <div class="invalid-feedback" *ngIf="addFormPolicy.get('policyDescription').touched">Please enter Policy Description</div>
+            </div>
+            <label for="amount">Amount</label>
+            <div class="input-group">
+              <input type="number" class="form-control" formControlName="amount" required >
+              <div class="invalid-feedback"*ngIf="addFormPolicy.get('amount').touched">Please enter Amount</div>
+            </div>
+            <label for="emi">Emi</label>
+            <div class="input-group">
+              <input type="number" class="form-control" formControlName="emi" required >
+              <div class="invalid-feedback"*ngIf="addFormPolicy.get('emi').touched">Please enter EMI</div>
+            </div>
+            <label for="duration">Duration</label>
+            <div class="input-group">
+              <input type="number" class="form-control" formControlName="duration" required >
+              <div class="invalid-feedback" *ngIf="addFormPolicy.get('duration').touched">Please enter Duration</div>
+            </div>
+            <label for="companyId">Company Name</label>
+            <select class="form-select" required aria-label="select example" formControlName="companyId">
+              <option value="">Which company do you choose?</option>
+              <ng-container *ngFor = "let company of companies">   
+              <option value="{{company.companyId}}">{{company.companyName}}</option>
+            </ng-container>
+            </select>
+            <label for="hospitalId">Hospital Name</label>
+            <select class="form-select" required aria-label="select example" formControlName="hospitalId">
+              <option value="">Which company do you choose?</option>
+              <ng-container *ngFor = "let hospital of hospitals">   
+              <option value="{{hospital.hospitalId}}">{{hospital.hospitalname}}</option>
+            </ng-container>
+            </select>
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="add()"[disabled]="registerForm.invalid">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
